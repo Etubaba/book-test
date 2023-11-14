@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/main.ts",
+    "postinstall": "npx prisma generate",
     "build": " rimraf dist && npx tsc ",
     "start": "npm run build && node dist/src/main.js"
   },
