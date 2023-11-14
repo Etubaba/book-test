@@ -11,9 +11,7 @@ datasource db {
 }
 
 model books {
-  id              String @id @default(auto()) @map("_id") @db.ObjectId
-  title           String
-  author          String
-  publicationYear Int
-  isbn            String
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  name   String
+  author String
 }

@@ -5,12 +5,11 @@ import { UpdateBookDto } from "../dto/updateBookDto";
 export class BookService {
   async createBook(createBookDto: CreateBookDto) {
     try {
-      const { title, isbn, author, publicationYear }: CreateBookDto =
-        createBookDto;
+      const { name, author }: CreateBookDto = createBookDto;
 
       //create Books
       const Book = await prisma.books.create({
-        data: { isbn, author, title, publicationYear },
+        data: { author, name },
       });
 
       return {
@@ -49,8 +48,7 @@ export class BookService {
 
   async updateBook(id: string, updateBookDto: UpdateBookDto) {
     try {
-      const { title, isbn, author, publicationYear }: UpdateBookDto =
-        updateBookDto;
+      const { name, author }: UpdateBookDto = updateBookDto;
       //check if record exist
       const book = await prisma.books.findUnique({
         where: {
@@ -66,10 +64,8 @@ export class BookService {
           id,
         },
         data: {
-          title,
-          isbn,
+          name,
           author,
-          publicationYear,
         },
       });
 
